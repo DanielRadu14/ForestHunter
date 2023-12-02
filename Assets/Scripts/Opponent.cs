@@ -5,6 +5,7 @@ using TMPro;
 
 public class Opponent : Fighter
 {
+    [SerializeField] private Healthbar healthbar;
     public Transform player;
     public float stopDistance = 1.5f;
     public float attackDistance = 1.45f;
@@ -31,6 +32,7 @@ public class Opponent : Fighter
 
     void Start()
     {
+        healthbar.UpdateHealthBar(100f, 100f);
         GetCommonComponents();
         StartCoroutine(SetOffensiveState());
     }
@@ -44,6 +46,7 @@ public class Opponent : Fighter
 
     void Update()
     {
+        healthbar.UpdateHealthBar(100f, animator.GetInteger("HP"));
         moveDir = (player.position - transform.position);
         moveDir = Vector3.Scale(moveDir, new Vector3(1, 0, 1));
 
