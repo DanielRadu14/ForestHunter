@@ -9,11 +9,6 @@ public class LevelProgressUI : MonoBehaviour
     [SerializeField] private float reduceSpeed = 2;
     private float target = 0;
 
-    public float GetProgressFill()
-    {
-        return uiFillImage.fillAmount;
-    }
-
     // Update is called once per frame
     public void UpdateProgressFill(float max, float current)
     {
