@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Fighter
-{   
+{
+    [SerializeField] private LevelProgressUI xpBar;
+    [SerializeField] private LevelProgressUI healthBar;
+
     public List<Transform> opponents;
     public bool aiming;
     public bool engagingOpponent = false;
@@ -31,6 +34,7 @@ public class Player : Fighter
         HandleSlide();
         HandleJump();
         IncrementTimers();
+        healthBar.UpdateProgressFill(100f, animator.GetInteger("HP"));
     }
 
     private void FightStance()
@@ -71,7 +75,6 @@ public class Player : Fighter
 
     private void HandleWallRun()
     {
-
         //minutul 51, tag stari, sa nu mai dea applyrootrotation la wallrun
         if (moveDir.magnitude < 10e-3f || !Input.GetButton("Jump"))
         {
