@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.InputSystem;
 
 public class Interacter : MonoBehaviour
 {
@@ -21,7 +20,10 @@ public class Interacter : MonoBehaviour
         {
             var interactable = colliders[0].GetComponent<IInteractable>();
 
-            //if(interactable != null && Keyboard.current.)
+            if(interactable != null && Input.GetKeyDown(KeyCode.E))
+            {
+                interactable.Interact(this);
+            }
         }
     }
 
